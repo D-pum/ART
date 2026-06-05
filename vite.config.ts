@@ -5,7 +5,8 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/ART/',
+    base: '/',
+    publicDir: 'assets',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
