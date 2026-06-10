@@ -1,68 +1,701 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Artisan Co</title>
-</head>
-<body class="bg-gray-950 text-white">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artisan & Co. — Delivering Impact. Transforming Spaces.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark:   '#050505',
+            ink:    '#0a0a0a',
+            zinc1:  '#111111',
+            zinc2:  '#1a1a1a',
+            zinc3:  '#2a2a2a',
+            cyan:   '#00f0ff',
+            cyandim:'#00b8c4',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['DM Mono', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    /* ── Base ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background-color: #050505; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-  <!-- Header -->
-  <header class="fixed w-full top-0 z-50 bg-dark/95 border-b border-gray-900 backdrop-blur-sm">
+    /* ── Nav ── */
+    .nav-link { transition: color 0.25s; letter-spacing: 0.08em; }
+    .nav-link:hover { color: #00f0ff; }
+    .nav-link.active { color: #00f0ff; }
+    .mobile-menu { transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
+    .mobile-menu.open { transform: translateX(0); }
+
+    /* ── Hero video ── */
+    .hero-video { object-fit: cover; }
+
+    /* ── Ticker ── */
+    .ticker-wrap { width: 100%; overflow: hidden; background: #0a0a0a; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; padding: 0.85rem 0; }
+    .ticker { display: flex; width: max-content; animation: ticker 50s linear infinite; }
+    .ticker:hover { animation-play-state: paused; }
+    .ticker-item { padding: 0 2.5rem; font-weight: 700; color: #3a3a3a; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.12em; white-space: nowrap; }
+    .ticker-sep { color: #00f0ff; opacity: 0.4; padding: 0 0.5rem; }
+    @keyframes ticker { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-50%,0,0); } }
+
+    /* ── Carousel ── */
+    .carousel-container { position: relative; width: 100%; max-width: 1400px; margin: 0 auto; height: 500px; overflow: hidden; }
+    @media (max-width: 768px) { .carousel-container { height: 380px; } }
+    .carousel-track { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; }
+    .carousel-slide {
+      position: absolute; top: 50%; left: 50%;
+      width: 60%; height: 420px;
+      border-radius: 12px; border: 1px solid #222;
+      background-size: cover; background-position: center; overflow: hidden;
+      transition: transform 0.55s cubic-bezier(0.25,1,0.5,1), filter 0.55s ease, opacity 0.55s ease, border-color 0.55s ease;
+      pointer-events: auto; cursor: pointer;
+    }
+    @media (max-width: 768px) { .carousel-slide { width: 85%; height: 300px; } }
+    .carousel-slide.active { border-color: #00f0ff; box-shadow: 0 0 50px rgba(0,240,255,0.12); }
+    .slide-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(5,5,5,0.96) 0%, rgba(5,5,5,0.35) 55%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem;
+      opacity: 0; transition: opacity 0.45s ease; pointer-events: none;
+    }
+    .carousel-slide.active .slide-overlay { opacity: 1; }
+    @media (max-width: 768px) { .slide-overlay { padding: 1.25rem; } }
+    .nav-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(5,5,5,0.85); border: 1px solid #00f0ff; color: #00f0ff;
+      width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 30; transition: all 0.25s; box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      font-size: 1rem;
+    }
+    .nav-arrow:hover { background: #00f0ff; color: #050505; box-shadow: 0 0 20px rgba(0,240,255,0.4); }
+    .nav-prev { left: 12px; } .nav-next { right: 12px; }
+    .dots { position: absolute; bottom: 14px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; z-index: 30; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #333; cursor: pointer; transition: all 0.25s; }
+    .dot.active { background: #00f0ff; box-shadow: 0 0 8px #00f0ff; transform: scale(1.3); }
+
+    /* ── Map ── */
+    .map-embed { filter: grayscale(1) invert(0.88) contrast(1.15) brightness(0.85); border-radius: 8px; }
+
+    /* ── Glow divider ── */
+    .glow-line { height: 1px; background: linear-gradient(90deg, transparent 0%, #00f0ff 40%, #00f0ff 60%, transparent 100%); opacity: 0.25; }
+
+    /* ── Card hover ── */
+    .service-card { transition: border-color 0.25s, box-shadow 0.25s; }
+    .service-card:hover { border-color: #2a2a2a; box-shadow: 0 0 30px rgba(0,240,255,0.04); }
+
+    /* ── Pillar card ── */
+    .pillar-card { transition: transform 0.35s ease, box-shadow 0.35s ease; }
+    .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+    .pillar-img { transition: opacity 0.35s ease; }
+    .pillar-card:hover .pillar-img { opacity: 0.55; }
+
+    /* ── CTA scan line ── */
+    .cta-section { position: relative; overflow: hidden; }
+    .cta-section::before {
+      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(ellipse at center, rgba(0,240,255,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* ── Form focus ── */
+    input:focus, textarea:focus, select:focus { border-color: #00f0ff !important; outline: none; box-shadow: 0 0 0 2px rgba(0,240,255,0.08); }
+
+    /* ── Stat counter ── */
+    .stat-value { font-variant-numeric: tabular-nums; }
+
+    /* ── Scroll reveal ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .ticker { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300" style="background: rgba(5,5,5,0.92); border-bottom: 1px solid #111; backdrop-filter: blur(12px);">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <nav class="hidden md:flex gap-8 text-sm font-semibold tracking-wide uppercase">
-        <a href="index.html" class="nav-link text-cyan">Home</a>
-        <a href="led-systems.html" class="nav-link">LED & IoT</a>
-        <a href="signage.html" class="nav-link">Signage</a>
-        <a href="#quote" class="nav-link">Get a Quote</a>
+
+      <a href="index.html" class="flex items-center gap-3 group">
+        <span class="text-xl font-black tracking-tight text-white uppercase leading-none">Artisan<span style="color:#00f0ff">&Co.</span></span>
+        <span class="hidden sm:block text-[10px] font-mono text-zinc-600 uppercase tracking-widest leading-tight border-l border-zinc-800 pl-3">Delivering Impact<br>Transforming Spaces</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs font-bold tracking-widest uppercase">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="#pillars" class="nav-link">LED & IoT</a>
+        <a href="#pillars" class="nav-link">Signage</a>
+        <a href="#quote" class="ml-2 px-5 py-2.5 font-bold text-xs uppercase tracking-widest transition-all duration-200" style="background:#00f0ff; color:#050505; letter-spacing:0.12em;">Get a Quote</a>
       </nav>
+
+      <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2 z-50" aria-label="Open menu">
+        <span class="block w-6 h-0.5 bg-white transition-all" id="bar1"></span>
+        <span class="block w-6 h-0.5 bg-white transition-all" id="bar2"></span>
+        <span class="block w-4 h-0.5 bg-white transition-all" id="bar3"></span>
+      </button>
     </div>
   </header>
 
-  <!-- Hero Section with Background Video -->
-  <section class="relative min-h-[80vh] flex items-center justify-center pt-20 border-b border-gray-900">
-    <video class="hero-video absolute inset-0 w-full h-full object-cover opacity-40 z-0" autoplay loop muted playsinline>
-      <source src="/aistudio/particle.mp4" type="video/mp4" />
+  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-40 flex flex-col pt-24 px-8 pb-12" style="background: rgba(5,5,5,0.98); backdrop-filter: blur(20px);">
+    <nav class="flex flex-col gap-6 mt-4">
+      <a href="index.html" class="text-3xl font-black uppercase tracking-tight text-white" onclick="closeMenu()">Home</a>
+      <a href="#pillars" class="text-3xl font-black uppercase tracking-tight text-zinc-400 hover:text-white transition-colors" onclick="closeMenu()">LED & IoT</a>
+      <a href="#pillars" class="text-3xl font-black uppercase tracking-tight text-zinc-400 hover:text-white transition-colors" onclick="closeMenu()">Signage</a>
+      <a href="#quote" class="mt-4 inline-block text-sm font-bold uppercase tracking-widest px-6 py-4 text-center transition-colors" style="background:#00f0ff; color:#050505;" onclick="closeMenu()">Get a Quote</a>
+    </nav>
+    <div class="mt-auto text-xs font-mono text-zinc-700">+91-9147720104 · admn@artisanco.biz</div>
+  </div>
+
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <video class="hero-video absolute inset-0 w-full h-full z-0" autoplay loop muted playsinline style="opacity:0.35">
+      <source src="./aistudio/hero.mp4" type="video/mp4" />
     </video>
-    
-    <div class="z-10 text-center px-4 max-w-4xl mx-auto">
-      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 uppercase">
-        Deliver Impact.<br><span class="text-cyan">Translate Spaces.</span>
+    <div class="absolute inset-0 z-0" style="background: linear-gradient(to bottom, rgba(5,5,5,0.3) 0%, rgba(5,5,5,0.1) 40%, rgba(5,5,5,0.7) 85%, #050505 100%);"></div>
+    <div class="absolute inset-0 z-0" style="background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 80px 80px;"></div>
+
+    <div class="relative z-10 text-center px-6 max-w-5xl mx-auto pt-24">
+      <p class="font-mono text-xs tracking-widest uppercase mb-6" style="color:#00f0ff; letter-spacing: 0.25em;">Est. 1995  ·  Kolkata, India  ·  Regional Leader</p>
+      <h1 class="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter leading-none uppercase mb-8">
+        Deliver<br class="hidden sm:block"> Impact.<br>
+        <span style="color:#00f0ff; -webkit-text-stroke: 0px; text-shadow: 0 0 60px rgba(0,240,255,0.35);">Transform</span><br class="hidden sm:block"> Spaces.
       </h1>
-      <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-        Leading architectural signage and advanced LED systems spanning regional dominance.
+      <p class="text-base md:text-lg text-zinc-400 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+        East India's foremost authority in advanced LED video walls, integrated IoT display infrastructure, and precision architectural signage.
       </p>
-      <a href="#quote" class="inline-block bg-cyan text-dark font-bold px-8 py-4 rounded uppercase tracking-widest hover:bg-white transition-colors">
-        Get Started
-      </a>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#pillars" class="inline-block font-bold text-sm uppercase tracking-widest px-8 py-4 transition-all duration-200 hover:brightness-90" style="background:#00f0ff; color:#050505;">Explore Solutions</a>
+        <a href="#quote" class="inline-block font-bold text-sm uppercase tracking-widest px-8 py-4 border border-zinc-700 text-white transition-all duration-200 hover:border-zinc-400">Get a Quote</a>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-40">
+      <div class="w-px h-12" style="background: linear-gradient(to bottom, #00f0ff, transparent);"></div>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-zinc-500">Scroll</span>
     </div>
   </section>
 
-  <!-- Twin Pillars Section -->
-  <section class="py-24 px-6 bg-[#0a0a0a]">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
-      
-      <!-- LED Card -->
-      <a href="led-systems.html" class="group relative h-[400px] border border-gray-800 rounded-xl overflow-hidden block">
-        <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-50 transition-opacity" style="background-image: url('/aistudio/led.jpeg');"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
-        <div class="absolute bottom-8 left-8 right-8">
-          <h2 class="text-3xl font-bold uppercase">Active LED & IoT Systems</h2>
-        </div>
-      </a>
+  <div style="background:#0a0a0a; border-top:1px solid #111; border-bottom:1px solid #111;">
+    <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div>
+        <div class="text-4xl font-black stat-value" style="color:#00f0ff;">30<span class="text-2xl">+</span></div>
+        <div class="text-xs font-mono text-zinc-500 uppercase tracking-widest mt-1">Years Active</div>
+      </div>
+      <div>
+        <div class="text-4xl font-black stat-value text-white">500<span class="text-2xl">+</span></div>
+        <div class="text-xs font-mono text-zinc-500 uppercase tracking-widest mt-1">Projects Delivered</div>
+      </div>
+      <div>
+        <div class="text-4xl font-black stat-value text-white">50<span class="text-2xl">+</span></div>
+        <div class="text-xs font-mono text-zinc-500 uppercase tracking-widest mt-1">Brand Partners</div>
+      </div>
+      <div>
+        <div class="text-4xl font-black stat-value text-white">4</div>
+        <div class="text-xs font-mono text-zinc-500 uppercase tracking-widest mt-1">States Coverage</div>
+      </div>
+    </div>
+  </div>
 
-      <!-- Signage Card -->
-      <a href="signage.html" class="group relative h-[400px] border border-gray-800 rounded-xl overflow-hidden block">
-        <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-50 transition-opacity" style="background-image: url('/aistudio/artisan-signage.jpeg');"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
-        <div class="absolute bottom-8 left-8 right-8">
-          <h2 class="text-3xl font-bold uppercase">Architectural Signage</h2>
-        </div>
-      </a>
+  <section id="pillars" class="py-28 px-6" style="background:#050505;">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#00f0ff;">Core Divisions</p>
+        <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight">Two Disciplines.<br>One Standard.</h2>
+      </div>
 
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <a href="led-systems.html" class="pillar-card group relative h-[480px] rounded-lg overflow-hidden block border" style="border-color:#1a1a1a;">
+          <div class="pillar-img absolute inset-0 bg-cover bg-center" style="background-image: url('./aistudio/led.jpeg'); opacity:0.4;"></div>
+          <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(5,5,5,0.85) 0%, rgba(5,5,5,0.4) 60%, transparent 100%);"></div>
+          <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(5,5,5,0.98) 0%, transparent 55%);"></div>
+          <div class="absolute top-0 left-0 w-1 h-full" style="background: linear-gradient(to bottom, #00f0ff, transparent);"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-8">
+            <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#00f0ff;">Division 01</p>
+            <h2 class="text-3xl md:text-4xl font-black uppercase leading-tight mb-3">Active LED &<br>IoT Systems</h2>
+            <p class="text-zinc-400 text-sm leading-relaxed mb-6">Commercial video walls, P1.25–P10 outdoor displays, Dahua integration, rental LED, and smart digital infrastructure.</p>
+            <div class="flex items-center gap-2 font-bold text-xs uppercase tracking-widest transition-all duration-200 group-hover:gap-3" style="color:#00f0ff;">
+              Explore Systems
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <a href="signage.html" class="pillar-card group relative h-[480px] rounded-lg overflow-hidden block border" style="border-color:#1a1a1a;">
+          <div class="pillar-img absolute inset-0 bg-cover bg-center" style="background-image: url('./aistudio/artisan-signage.jpeg'); opacity:0.4;"></div>
+          <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(5,5,5,0.85) 0%, rgba(5,5,5,0.4) 60%, transparent 100%);"></div>
+          <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(5,5,5,0.98) 0%, transparent 55%);"></div>
+          <div class="absolute top-0 left-0 w-1 h-full" style="background: linear-gradient(to bottom, #00f0ff, transparent);"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-8">
+            <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#00f0ff;">Division 02</p>
+            <h2 class="text-3xl md:text-4xl font-black uppercase leading-tight mb-3">Architectural<br>Signage</h2>
+            <p class="text-zinc-400 text-sm leading-relaxed mb-6">3D channel letters, facade cladding, store interiors, branded environments, and high-impact print for premium retail.</p>
+            <div class="flex items-center gap-2 font-bold text-xs uppercase tracking-widest transition-all duration-200 group-hover:gap-3" style="color:#00f0ff;">
+              Explore Signage
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </a>
+
+      </div>
     </div>
   </section>
 
-  <script type="module" src="/src/main.tsx"></script>
+  <div class="glow-line"></div>
+  <section style="background:#0a0a0a; padding: 4rem 1.5rem;">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 reveal">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest mb-2" style="color:#00f0ff;">Certified Integration Partner</p>
+        <h3 class="text-2xl md:text-3xl font-black uppercase tracking-wide text-white">Dahua Technology</h3>
+        <p class="text-zinc-500 text-sm mt-2 max-w-md">Global-grade hardware infrastructure, enterprise ecosystem support, and certified engineer deployment across Eastern India.</p>
+      </div>
+      <div class="hidden md:block w-px h-16 bg-zinc-800"></div>
+      <div class="flex gap-10 text-center">
+        <div>
+          <div class="text-2xl font-black" style="color:#00f0ff;">IP67</div>
+          <div class="font-mono text-xs text-zinc-600 uppercase tracking-wider mt-0.5">Outdoor Rated</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-white">4K</div>
+          <div class="font-mono text-xs text-zinc-600 uppercase tracking-wider mt-0.5">Max Resolution</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-white">24/7</div>
+          <div class="font-mono text-xs text-zinc-600 uppercase tracking-wider mt-0.5">Support SLA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line"></div>
+
+  <section class="py-28" style="background:#050505;">
+    <div class="text-center mb-14 px-6 reveal">
+      <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#00f0ff;">Technical Specifications</p>
+      <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight">LED Display Matrix</h2>
+      <div class="w-16 h-px mx-auto mt-6" style="background:#00f0ff; opacity:0.5;"></div>
+    </div>
+    <div class="carousel-container" id="techCarousel">
+      <button class="nav-arrow nav-prev">❮</button>
+      <div class="carousel-track"></div>
+      <button class="nav-arrow nav-next">❯</button>
+      <div class="dots"></div>
+    </div>
+  </section>
+
+  <section style="background:#0a0a0a; border-top:1px solid #111; border-bottom:1px solid #111; padding: 7rem 1.5rem;">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#00f0ff;">What We Build</p>
+        <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight">Core Competencies</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <div class="service-card p-8 border rounded" style="border-color:#1a1a1a; background:#050505;">
+          <div class="font-mono text-xs mb-5" style="color:#00f0ff;">01 / LED VIDEO WALLS</div>
+          <h3 class="text-lg font-black uppercase text-white mb-3">Commercial Video Walls</h3>
+          <p class="text-zinc-500 text-sm leading-relaxed">P1.25 to P10 pitch indoor and outdoor LED arrays, from executive boardrooms to stadium-scale facades. Seamless cabinet alignment, calibrated colour performance.</p>
+        </div>
+
+        <div class="service-card p-8 border rounded" style="border-color:#1a1a1a; background:#050505;">
+          <div class="font-mono text-xs mb-5" style="color:#00f0ff;">02 / OUTDOOR DIGITAL</div>
+          <h3 class="text-lg font-black uppercase text-white mb-3">Outdoor & Facade Displays</h3>
+          <p class="text-zinc-500 text-sm leading-relaxed">Weatherproof high-nit cabinets for building skins, OOH advertising hoardings, and landmark installations across retail and commercial real estate.</p>
+        </div>
+
+        <div class="service-card p-8 border rounded" style="border-color:#1a1a1a; background:#050505;">
+          <div class="font-mono text-xs mb-5" style="color:#00f0ff;">03 / IoT INTEGRATION</div>
+          <h3 class="text-lg font-black uppercase text-white mb-3">Smart Display Infrastructure</h3>
+          <p class="text-zinc-500 text-sm leading-relaxed">Digital kiosks, interactive standees, IFPDs, and sensor-driven display ecosystems with centralised CMS management. Dahua-backed hardware stack.</p>
+        </div>
+
+        <div class="service-card p-8 border rounded" style="border-color:#1a1a1a; background:#050505;">
+          <div class="font-mono text-xs mb-5" style="color:#00f0ff;">04 / ARCHITECTURAL SIGNAGE</div>
+          <h3 class="text-lg font-black uppercase text-white mb-3">Brand Fabrication</h3>
+          <p class="text-zinc-500 text-sm leading-relaxed">Precision-fabricated 3D channel letters, halo-lit metal signage, dimensional logos, and backlit acrylic for corporate lobbies and premium retail.</p>
+        </div>
+
+        <div class="service-card p-8 border rounded" style="border-color:#1a1a1a; background:#050505;">
+          <div class="font-mono text-xs mb-5" style="color:#00f0ff;">05 / STORE IDENTITY</div>
+          <h3 class="text-lg font-black uppercase text-white mb-3">Retail & Store Environments</h3>
+          <p class="text-zinc-500 text-sm leading-relaxed">Full store interior and exterior fit-outs — facade cladding, wall graphics, window props, illuminated headers, and environmental branding for national format roll-outs.</p>
+        </div>
+
+        <div class="service-card p-8 border rounded" style="border-color:#1a1a1a; background:#050505;">
+          <div class="font-mono text-xs mb-5" style="color:#00f0ff;">06 / RENTAL & EVENTS</div>
+          <h3 class="text-lg font-black uppercase text-white mb-3">Rental LED & Event Staging</h3>
+          <p class="text-zinc-500 text-sm leading-relaxed">P3.9 die-cast aluminium fast-lock rental cabinets for concerts, corporate events, exhibitions, and stage backdrops. Full crew deployment and live calibration.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="py-28" style="background:#050505;">
+    <div class="text-center mb-14 px-6 reveal">
+      <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#00f0ff;">Selected Work</p>
+      <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight">Installation Gallery</h2>
+      <div class="w-16 h-px mx-auto mt-6" style="background:#00f0ff; opacity:0.5;"></div>
+    </div>
+    <div class="carousel-container" id="workCarousel">
+      <button class="nav-arrow nav-prev">❮</button>
+      <div class="carousel-track"></div>
+      <button class="nav-arrow nav-next">❯</button>
+      <div class="dots"></div>
+    </div>
+  </section>
+
+  <div class="ticker-wrap">
+    <div class="ticker" id="clientTicker"></div>
+  </div>
+
+  <section class="cta-section relative py-32 px-6 text-center overflow-hidden">
+    <video class="absolute inset-0 w-full h-full object-cover z-0" autoplay loop muted playsinline style="opacity:0.15;">
+      <source src="./aistudio/particle.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 z-0" style="background: linear-gradient(to bottom, #050505 0%, transparent 20%, transparent 80%, #050505 100%);"></div>
+    <div class="relative z-10 max-w-3xl mx-auto reveal">
+      <p class="font-mono text-xs uppercase tracking-widest mb-4" style="color:#00f0ff;">Ready to Begin?</p>
+      <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight leading-tight mb-6">
+        What does your<br>project need?<br><span style="color:#00f0ff;">We'll figure it out.</span>
+      </h2>
+      <p class="text-zinc-400 mb-10 text-lg">From a single lobby display to a multi-site signage rollout — we scope, fabricate, and install end-to-end.</p>
+      <a href="#quote" class="inline-block font-bold text-sm uppercase tracking-widest px-10 py-4 transition-all duration-200 hover:brightness-90" style="background:#00f0ff; color:#050505;">Start a Conversation</a>
+    </div>
+  </section>
+
+  <section id="quote" style="background:#0a0a0a; border-top:1px solid #111; padding: 7rem 1.5rem;">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-12 reveal">
+        <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#00f0ff;">Direct Enquiry</p>
+        <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight">Request a Quote</h2>
+        <p class="text-zinc-500 text-sm mt-4">Our team responds within one business day. All enquiries are confidential.</p>
+      </div>
+
+      <form id="leadForm" action="https://formspree.io/f/placeholder" method="POST" class="space-y-5 p-8 border rounded" style="border-color:#1a1a1a; background:#050505;">
+        <input type="hidden" name="_subject" value="Project Enquiry — Artisan & Co." />
+
+        <div class="grid md:grid-cols-2 gap-5">
+          <div>
+            <label class="block font-mono text-xs uppercase tracking-widest mb-2" style="color:#00f0ff;">Full Name</label>
+            <input type="text" name="name" required placeholder="Your name"
+              class="w-full p-3 rounded text-white text-sm border transition-all"
+              style="background:#0a0a0a; border-color:#222; color:#fff;" />
+          </div>
+          <div>
+            <label class="block font-mono text-xs uppercase tracking-widest mb-2" style="color:#00f0ff;">Business Email</label>
+            <input type="email" name="email" required placeholder="you@company.com"
+              class="w-full p-3 rounded text-white text-sm border transition-all"
+              style="background:#0a0a0a; border-color:#222; color:#fff;" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-mono text-xs uppercase tracking-widest mb-2" style="color:#00f0ff;">Phone Number</label>
+          <input type="tel" name="phone" required placeholder="+91 00000 00000"
+            class="w-full p-3 rounded text-white text-sm border transition-all"
+            style="background:#0a0a0a; border-color:#222; color:#fff;" />
+        </div>
+
+        <div>
+          <label class="block font-mono text-xs uppercase tracking-widest mb-2" style="color:#00f0ff;">Division of Interest</label>
+          <select name="division"
+            class="w-full p-3 rounded text-sm border transition-all cursor-pointer"
+            style="background:#0a0a0a; border-color:#222; color:#fff;">
+            <option value="">Select one…</option>
+            <option value="led">Active LED & IoT Systems</option>
+            <option value="signage">Architectural Signage</option>
+            <option value="both">Both Divisions</option>
+            <option value="rental">Rental LED / Events</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-mono text-xs uppercase tracking-widest mb-2" style="color:#00f0ff;">Project Details</label>
+          <textarea name="details" rows="5" required placeholder="Describe your project — dimensions, location, timeline, and any other context…"
+            class="w-full p-3 rounded text-white text-sm border transition-all resize-none"
+            style="background:#0a0a0a; border-color:#222; color:#fff;"></textarea>
+        </div>
+
+        <button type="submit"
+          class="w-full font-black text-sm uppercase tracking-widest py-4 transition-all duration-200 hover:brightness-90"
+          style="background:#00f0ff; color:#050505;">
+          Submit Enquiry
+        </button>
+      </form>
+
+      <div id="formSuccess" class="hidden mt-6 p-6 rounded border text-center font-bold text-sm" style="background:rgba(0,240,255,0.06); border-color:rgba(0,240,255,0.3); color:#00f0ff;">
+        ✓  Request received. Our team will be in touch within one business day.
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#050505; border-top:1px solid #111; padding: 5rem 1.5rem 2.5rem;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-12 pb-12" style="border-bottom:1px solid #111;">
+
+        <div>
+          <div class="text-2xl font-black tracking-tight uppercase mb-4">Artisan<span style="color:#00f0ff;">&Co.</span></div>
+          <p class="text-zinc-600 text-sm leading-relaxed mb-6">M/S Artisan & Co.  |  Inex Works Pvt. Ltd.<br>East India's leading commercial display and architectural signage firm since 1995.</p>
+          <div class="flex gap-3">
+            <a href="#pillars" class="font-mono text-xs uppercase tracking-widest px-3 py-2 border text-zinc-400 hover:border-zinc-500 hover:text-white transition-all" style="border-color:#1a1a1a;">LED & IoT</a>
+            <a href="#pillars" class="font-mono text-xs uppercase tracking-widest px-3 py-2 border text-zinc-400 hover:border-zinc-500 hover:text-white transition-all" style="border-color:#1a1a1a;">Signage</a>
+          </div>
+        </div>
+
+        <div>
+          <p class="font-mono text-xs uppercase tracking-widest mb-5" style="color:#00f0ff;">Contact</p>
+          <div class="space-y-4 text-sm text-zinc-500">
+            <div>
+              <div class="text-zinc-300 text-xs font-bold uppercase tracking-wider mb-1">Corporate Office</div>
+              <div>18, W.C. Banerjee Street<br>Kolkata, West Bengal 700006</div>
+            </div>
+            <div>
+              <div class="text-zinc-300 text-xs font-bold uppercase tracking-wider mb-1">Production Facility</div>
+              <div>DK 3 Sukanta Pally, Baguiati<br>Kolkata 700006</div>
+            </div>
+            <div>
+              <div class="text-zinc-300 text-xs font-bold uppercase tracking-wider mb-1">Phone</div>
+              <div>+91-9147720104  /  +91-9330722323</div>
+            </div>
+            <div>
+              <div class="text-zinc-300 text-xs font-bold uppercase tracking-wider mb-1">Email</div>
+              <div>admn@artisanco.biz<br>signage@artisanco.biz</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p class="font-mono text-xs uppercase tracking-widest mb-5" style="color:#00f0ff;">Find Us</p>
+          <iframe
+            class="w-full h-52 map-embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.4357777717466!2d88.36147427606775!3d22.589004031952227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277abedaaaaab%3A0x67c29bebc0abfd12!2s18%2C%20W%20C%20Banerjee%20St%2C%20Girish%20Park%2C%20Manicktala%2C%20Darjipara%2C%20Kolkata%2C%20West%20Bengal%20700006!5e0!3m2!1sen!2sin!4v1700000000000"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Artisan & Co. Office Location">
+          </iframe>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-zinc-700 font-mono text-xs">
+        <span>© 1995–2026 Artisan & Co. / Inex Works Pvt. Ltd. All rights reserved.</span>
+        <span class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full inline-block" style="background:#00f0ff; box-shadow:0 0 6px #00f0ff;"></span>
+          Kolkata, India
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Mobile menu ──
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const bar1 = document.getElementById('bar1');
+    const bar2 = document.getElementById('bar2');
+    const bar3 = document.getElementById('bar3');
+    let menuOpen = false;
+
+    function closeMenu() {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      bar1.style.transform = ''; bar1.style.opacity = '';
+      bar2.style.transform = '';
+      bar3.style.transform = ''; bar3.style.width = '';
+    }
+
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      if (menuOpen) {
+        mobileMenu.classList.add('open');
+        bar1.style.transform = 'translateY(8px) rotate(45deg)';
+        bar2.style.opacity = '0';
+        bar3.style.transform = 'translateY(-8px) rotate(-45deg)';
+        bar3.style.width = '24px';
+      } else {
+        closeMenu();
+      }
+    });
+
+    // ── Client ticker ──
+    const clients = [
+      "Forever 21", "Van Heusen", "Tommy Hilfiger", "Celio",
+      "Reliance Retail", "Allen Solly", "Mothercare", "Adidas",
+      "Bandhan Bank", "UltraTech Cement", "GKB Opticals", "Trends",
+      "Manyavar", "Pantaloons", "Louis Philippe", "ONLY",
+      "VIP", "Shukhobrishti", "News Time Bangla", "Manish Creations"
+    ];
+    const tickerEl = document.getElementById('clientTicker');
+    const tickerItems = clients.map(c =>
+      `<span class="ticker-item">${c}</span><span class="ticker-sep">·</span>`
+    ).join('');
+    tickerEl.innerHTML = tickerItems + tickerItems;
+
+    // ── Carousel engine ──
+    const techData = [
+      {
+        img: './aistudio/p1.86.jpeg',
+        title: 'P1.86 Ultra-Fine Pitch Indoor LED',
+        spec: 'Native 4K resolution for executive boardrooms, command centres, and high-end retail visual merchandising walls'
+      },
+      {
+        img: './aistudio/p2.5.jpeg',
+        title: 'P2.5 Premium Indoor Commercial LED',
+        spec: 'High-refresh seamless video walls for luxury retail, showrooms, hospitality, and stadium concourses'
+      },
+      {
+        img: './aistudio/p4.jpeg',
+        title: 'P4 Outdoor High-Brightness LED',
+        spec: 'IP67-rated weatherproof display engineered for high-nit OOH advertising and architectural facades'
+      },
+      {
+        img: './aistudio/Rental.jpeg',
+        title: 'P3.9 Rental LED Module',
+        spec: 'Lightweight die-cast aluminium fast-lock cabinets for concerts, corporate events, and live exhibitions'
+      },
+      {
+        img: './aistudio/display_iot.jpeg',
+        title: 'Smart Display & IoT Solutions',
+        spec: 'IFPD interactive flat panels, digital standees, kiosks, and Dahua-integrated content management systems'
+      }
+    ];
+
+    const workData = [
+      { img: './aistudio/facade.jpeg', title: 'Facade LED Installation' },
+      { img: './aistudio/artisan.jpeg', title: 'Corporate Office Signage' },
+      { img: './aistudio/carousel_signage.jpeg', title: 'Retail Signage Roll-Out' },
+      { img: './aistudio/artisan-signage.jpeg', title: 'Illuminated Brand Signage' },
+      { img: './aistudio/Rental.jpeg', title: 'Event Rental LED Stage' },
+    ];
+
+    function initCarousel(containerId, data, withSpec) {
+      const track = document.querySelector(`#${containerId} .carousel-track`);
+      const dotsContainer = document.querySelector(`#${containerId} .dots`);
+      let activeIndex = 0;
+
+      data.forEach((item, i) => {
+        const slide = document.createElement('div');
+        slide.className = `carousel-slide ${i === activeIndex ? 'active' : ''}`;
+        slide.style.backgroundImage = `url('${item.img}')`;
+
+        let overlay = '';
+        if (item.title) {
+          overlay = `<div class="slide-overlay">
+            <h3 class="text-xl md:text-2xl font-black text-white uppercase leading-tight mb-2">${item.title}</h3>
+            ${withSpec && item.spec ? `<p class="font-mono text-xs leading-relaxed" style="color:#00f0ff;">${item.spec}</p>` : ''}
+          </div>`;
+        }
+        slide.innerHTML = overlay;
+        track.appendChild(slide);
+
+        const dot = document.createElement('div');
+        dot.className = `dot ${i === activeIndex ? 'active' : ''}`;
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+      });
+
+      function updateActive() {
+        const slides = track.querySelectorAll('.carousel-slide');
+        const dots = dotsContainer.querySelectorAll('.dot');
+        const isMobile = window.innerWidth <= 768;
+
+        slides.forEach((slide, i) => {
+          const offset = i - activeIndex;
+          const abs = Math.abs(offset);
+
+          if (abs > 2) {
+            slide.style.opacity = '0';
+            slide.style.pointerEvents = 'none';
+          } else {
+            slide.style.opacity = abs === 0 ? '1' : String(1 - abs * 0.45);
+            slide.style.pointerEvents = abs === 0 ? 'auto' : 'none';
+          }
+
+          const baseScale = isMobile ? 0.9 : 1;
+          const scale = Math.max(0.55, baseScale - abs * 0.15);
+          const gap = isMobile ? 105 : 90;
+          const translateX = `calc(-50% + ${offset * gap}%)`;
+
+          slide.style.transform = `translate(${translateX}, -50%) scale(${scale})`;
+          slide.style.filter = `blur(${abs * 4}px)`;
+          slide.style.zIndex = String(10 - abs);
+          slide.className = `carousel-slide ${i === activeIndex ? 'active' : ''}`;
+          dots[i].className = `dot ${i === activeIndex ? 'active' : ''}`;
+        });
+      }
+
+      function goToSlide(index) {
+        if (index < 0) index = data.length - 1;
+        if (index >= data.length) index = 0;
+        activeIndex = index;
+        updateActive();
+      }
+
+      // Auto-advance
+      let autoTimer = setInterval(() => goToSlide(activeIndex + 1), 4500);
+      const container = document.getElementById(containerId);
+      container.addEventListener('mouseenter', () => clearInterval(autoTimer));
+      container.addEventListener('mouseleave', () => {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => goToSlide(activeIndex + 1), 4500);
+      });
+
+      document.querySelector(`#${containerId} .nav-prev`).addEventListener('click', () => {
+        clearInterval(autoTimer);
+        goToSlide(activeIndex - 1);
+      });
+      document.querySelector(`#${containerId} .nav-next`).addEventListener('click', () => {
+        clearInterval(autoTimer);
+        goToSlide(activeIndex + 1);
+      });
+
+      // Touch / swipe
+      let touchStartX = 0;
+      container.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      container.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 50) goToSlide(activeIndex + (dx < 0 ? 1 : -1));
+      });
+
+      updateActive();
+      window.addEventListener('resize', updateActive);
+    }
+
+    initCarousel('techCarousel', techData, true);
+    initCarousel('workCarousel', workData, false);
+
+    // ── Form ──
+    document.getElementById('leadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('formSuccess').classList.remove('hidden');
+    });
+
+    // ── Scroll reveal ──
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
