@@ -3,54 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Artisan & Co. | Enterprise Signage & LED</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: { extend: { colors: { dark: '#050505', cyan: '#00E5FF' }, fontFamily: { sans: ['Inter', 'sans-serif'] } } }
-    }
-  </script>
-  <style>
-    body { background-color: #050505; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-    .nav-link { transition: color 0.3s; } .nav-link:hover { color: #00E5FF; }
-    .ticker-wrap { width: 100%; overflow: hidden; background: #0a0a0a; border-y: 1px solid #1a1a1a; padding: 1rem 0; }
-    .ticker { display: flex; width: max-content; animation: ticker 40s linear infinite; }
-    .ticker-item { padding: 0 2rem; font-weight: 600; color: #555; font-size: 1.25rem; text-transform: uppercase; letter-spacing: 1px; }
-    @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
-    
-    .carousel-container { position: relative; width: 100%; max-width: 1400px; margin: 0 auto; height: 500px; overflow: hidden; }
-    @media (max-width: 768px) { .carousel-container { height: 420px; } }
-    .carousel-track { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; }
-    .carousel-slide { 
-      position: absolute; top: 50%; left: 50%;
-      width: 60%; height: 400px; border-radius: 12px; border: 1px solid #222; 
-      background-size: cover; background-position: center; overflow: hidden;
-      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s ease, opacity 0.6s ease, border-color 0.6s ease;
-      pointer-events: auto;
-    }
-    .carousel-slide.active { border-color: #00E5FF; box-shadow: 0 0 40px rgba(0,229,255,0.15); }
-    @media (max-width: 768px) { .carousel-slide { width: 85%; height: 320px; } }
-    .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: #050505; border: 1px solid #00E5FF; color: #00E5FF; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 30; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-    .nav-arrow:hover { background: #00E5FF; color: #050505; }
-    .nav-prev { left: 10px; } .nav-next { right: 10px; }
-    .dots { position: absolute; bottom: 15px; left: 0; right: 0; display: flex; justify-content: center; gap: 10px; z-index: 30; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; background: #333; cursor: pointer; transition: 0.3s; }
-    .dot.active { background: #00E5FF; box-shadow: 0 0 10px #00E5FF; transform: scale(1.2); }
-    
-    .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.2; z-index: -1; }
-    .map-embed { filter: grayscale(1) invert(0.9) contrast(1.2); border: 1px solid #00E5FF; border-radius: 8px; }
-
-    .slide-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.4) 50%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; opacity: 0; transition: opacity 0.5s ease; pointer-events: none; }
-    .carousel-slide.active .slide-overlay { opacity: 1; }
-    @media (max-width: 768px) { .slide-overlay { padding: 1rem; } .slide-overlay h3 { font-size: 1.1rem; line-height: 1.3; } }
-  </style>
+  <title>Artisan Co</title>
 </head>
-<body>
-  <!-- Navbar -->
+<body class="bg-gray-950 text-white">
+
+  <!-- Header -->
   <header class="fixed w-full top-0 z-50 bg-dark/95 border-b border-gray-900 backdrop-blur-sm">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="index.html" class="text-2xl font-bold tracking-tight text-white border-b-2 border-cyan leading-none pb-1">Artisan<span class="text-cyan">co.biz</span></a>
       <nav class="hidden md:flex gap-8 text-sm font-semibold tracking-wide uppercase">
         <a href="index.html" class="nav-link text-cyan">Home</a>
         <a href="led-systems.html" class="nav-link">LED & IoT</a>
@@ -60,240 +19,50 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero Section with Background Video -->
   <section class="relative min-h-[80vh] flex items-center justify-center pt-20 border-b border-gray-900">
-    <video class="hero-video" autoplay loop muted playsinline>
-      <source src="/aistudio/Digital_installation_particle_sw…_202606030330.mp4" type="video/mp4" />
+    <video class="hero-video absolute inset-0 w-full h-full object-cover opacity-40 z-0" autoplay loop muted playsinline>
+      <source src="/aistudio/particle.mp4" type="video/mp4" />
     </video>
+    
     <div class="z-10 text-center px-4 max-w-4xl mx-auto">
-      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 uppercase">Deliver Impact.<br/><span class="text-cyan">Translate Spaces.</span></h1>
-      <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">Leading architectural signage and advanced LED systems spanning regional dominance to national panoramas since 1995.</p>
-      <a href="#quote" class="inline-block bg-cyan text-dark font-bold px-8 py-4 rounded uppercase tracking-widest hover:bg-white transition-colors">Start Project</a>
+      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 uppercase">
+        Deliver Impact.<br><span class="text-cyan">Translate Spaces.</span>
+      </h1>
+      <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+        Leading architectural signage and advanced LED systems spanning regional dominance.
+      </p>
+      <a href="#quote" class="inline-block bg-cyan text-dark font-bold px-8 py-4 rounded uppercase tracking-widest hover:bg-white transition-colors">
+        Get Started
+      </a>
     </div>
   </section>
 
-  <!-- Twin Pillars -->
+  <!-- Twin Pillars Section -->
   <section class="py-24 px-6 bg-[#0a0a0a]">
     <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
-      <a href="led-systems.html" class="group relative h-[400px] border border-gray-800 rounded-xl overflow-hidden hover:border-cyan transition-colors block">
-        <div class="absolute inset-0 bg-[url('/aistudio/LED.jpeg')] bg-cover bg-center opacity-30 group-hover:opacity-50 transition-opacity"></div>
+      
+      <!-- LED Card -->
+      <a href="led-systems.html" class="group relative h-[400px] border border-gray-800 rounded-xl overflow-hidden block">
+        <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-50 transition-opacity" style="background-image: url('/aistudio/led.jpeg');"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
         <div class="absolute bottom-8 left-8 right-8">
           <h2 class="text-3xl font-bold uppercase">Active LED & IoT Systems</h2>
         </div>
       </a>
-      <a href="signage.html" class="group relative h-[400px] border border-gray-800 rounded-xl overflow-hidden hover:border-cyan transition-colors block">
-        <div class="absolute inset-0 bg-[url('/aistudio/Artisan%20Signage.jpeg')] bg-cover bg-center opacity-30 group-hover:opacity-50 transition-opacity"></div>
+
+      <!-- Signage Card -->
+      <a href="signage.html" class="group relative h-[400px] border border-gray-800 rounded-xl overflow-hidden block">
+        <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-50 transition-opacity" style="background-image: url('/aistudio/artisan-signage.jpeg');"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
         <div class="absolute bottom-8 left-8 right-8">
-          <h2 class="text-3xl font-bold uppercase">Architectural & Commercial Signage</h2>
+          <h2 class="text-3xl font-bold uppercase">Architectural Signage</h2>
         </div>
       </a>
+
     </div>
   </section>
 
-  <!-- Carousel Section -->
-  <section class="py-24 border-y border-gray-900">
-    <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold uppercase tracking-tight">Portfolio Projects</h2>
-      <div class="w-24 h-1 bg-cyan mx-auto mt-6"></div>
-    </div>
-    <div class="carousel-container" id="homeCarousel">
-      <button class="nav-arrow nav-prev">&#10094;</button>
-      <div class="carousel-track">
-      </div>
-      <button class="nav-arrow nav-next">&#10095;</button>
-      <div class="dots"></div>
-    </div>
-  </section>
-
-  <!-- MD's Message -->
-  <section class="py-24 px-6 bg-[#0a0a0a]">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
-      <div class="w-full md:w-1/3">
-        <div class="aspect-square bg-gray-900 border border-gray-800 rounded flex items-center justify-center p-8 relative">
-           <div class="absolute inset-0 border border-cyan transform translate-x-4 translate-y-4 -z-10 rounded"></div>
-           <svg class="w-16 h-16 text-gray-700" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-        </div>
-        <div class="mt-6">
-          <h3 class="text-xl font-bold text-white">Mr. Dipankar Chowdhury</h3>
-          <p class="text-cyan font-mono text-sm uppercase">Managing Director</p>
-          <p class="text-gray-500 text-sm mt-2">Founded 1995 • Artisan & Co. / Inex Works Pvt. Ltd.</p>
-        </div>
-      </div>
-      <div class="w-full md:w-2/3">
-        <svg class="w-12 h-12 text-cyan opacity-50 mb-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
-        <p class="text-2xl md:text-3xl font-medium leading-relaxed text-gray-300">
-          "To become an industry leader from regional to national level by constant value addition to the quality of the job towards promising delivery with perfection, without compromising quality. Our main mission is to have pan-India coverage with a bigger clientele."
-        </p>
-        <div class="mt-8 pt-8 border-t border-gray-800 grid grid-cols-3 gap-4">
-           <div>
-             <h4 class="text-white font-bold">Project Coordinator</h4>
-             <p class="text-xs text-gray-500 mt-1 uppercase">Strategic Vision</p>
-           </div>
-           <div>
-             <h4 class="text-white font-bold">Operations Supervisors</h4>
-             <p class="text-xs text-gray-500 mt-1 uppercase">Operational Efficiency</p>
-           </div>
-           <div>
-             <h4 class="text-white font-bold">Safety Supervisors</h4>
-             <p class="text-xs text-gray-500 mt-1 uppercase">Workplace Safety</p>
-           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Ticker -->
-  <div class="ticker-wrap">
-    <div class="ticker" id="clientTicker">
-    </div>
-  </div>
-
-  <!-- Form -->
-  <section id="quote" class="py-24 px-6 border-b border-gray-900">
-    <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-12">
-         <h2 class="text-3xl font-bold uppercase tracking-tight">Initiate a Project</h2>
-         <p class="text-gray-400 mt-2">Connect with our engineering and fabrication team.</p>
-      </div>
-      <form id="leadForm" action="https://formspree.io/f/placeholder" method="POST" class="space-y-6 bg-[#0a0a0a] p-8 border border-gray-800 rounded">
-        <input type="hidden" name="_subject" value="General Website Lead">
-        <div class="grid md:grid-cols-2 gap-6">
-          <div>
-            <label class="block text-sm font-mono text-cyan mb-2">FULL NAME</label>
-            <input type="text" name="name" required class="w-full bg-dark border border-gray-700 p-3 rounded text-white focus:border-cyan focus:outline-none transition-colors">
-          </div>
-          <div>
-            <label class="block text-sm font-mono text-cyan mb-2">BUSINESS EMAIL</label>
-            <input type="email" name="email" required class="w-full bg-dark border border-gray-700 p-3 rounded text-white focus:border-cyan focus:outline-none transition-colors">
-          </div>
-        </div>
-        <div>
-          <label class="block text-sm font-mono text-cyan mb-2">PHONE NUMBER</label>
-          <input type="tel" name="phone" required class="w-full bg-dark border border-gray-700 p-3 rounded text-white focus:border-cyan focus:outline-none transition-colors">
-        </div>
-        <div>
-          <label class="block text-sm font-mono text-cyan mb-2">PROJECT DETAILS</label>
-          <textarea name="details" rows="4" required class="w-full bg-dark border border-gray-700 p-3 rounded text-white focus:border-cyan focus:outline-none transition-colors"></textarea>
-        </div>
-        <button type="submit" class="w-full bg-cyan text-dark font-bold uppercase tracking-widest py-4 hover:bg-white transition-colors">Submit Request</button>
-      </form>
-      <div id="formSuccess" class="hidden mt-6 p-6 bg-cyan/10 border border-cyan text-cyan text-center font-bold rounded">
-        Request received. Our team will contact you shortly.
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-dark pt-16 pb-8 px-6">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 border-b border-gray-900 pb-12 mb-8">
-      <div>
-        <h2 class="text-2xl font-bold tracking-tight text-white mb-6">Artisan<span class="text-cyan">co.biz</span></h2>
-        <div class="space-y-4 text-gray-400">
-           <p><strong class="text-white">Corporate Office:</strong><br/>18, W.C. Banerjee Street, Kolkata, West Bengal 700006</p>
-           <p><strong class="text-white">Production Facility:</strong><br/>DK 3 Sukanta Pally, Baguiati, Town, Kolkata 700006</p>
-           <p><strong class="text-white">Global Contact:</strong><br/>+91-9147720104 / +91-9330722323</p>
-           <p><strong class="text-white">Digital Comms:</strong><br/>admn@artisanco.biz <br/> signage@artisanco.biz</p>
-        </div>
-      </div>
-      <div>
-         <iframe class="w-full h-64 map-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.4357777717466!2d88.36147427606775!3d22.589004031952227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277abedaaaaab%3A0x67c29bebc0abfd12!2s18%2C%20W%20C%20Banerjee%20St%2C%20Girish%20Park%2C%20Manicktala%2C%20Darjipara%2C%20Kolkata%2C%20West%20Bengal%20700006!5e0!3m2!1sen!2sin!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-    <div class="text-center text-gray-600 text-sm font-mono">
-       &copy; 1995-2026 Artisan & Co. / Inex Works Pvt. Ltd. All rights reserved.
-    </div>
-  </footer>
-
-  <script>
-    const clients = ["Forever 21", "Van Heusen", "Tommy Hilfiger", "Celio", "Reliance Retail", "Manish Creations", "Allen Solly", "Mothercare", "Adidas", "Bandhan Bank", "UltraTech Cement", "GKB Opticals", "Chumbak", "Trends", "Ford", "VIP", "News Time Bangla", "Manyavar", "Shukhobrishti", "Louis Philippe", "Pantaloons", "Mileage", "ONLY", "Renaissance"];
-    
-    const sliderData = [
-      { img: '/aistudio/Artisan%20Signage.jpeg', title: '' },
-      { img: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=800&q=80', title: '' },
-      { img: '/aistudio/LED_video_wall_displaying_graphs_202606030245.jpeg', title: '' },
-      { img: '/aistudio/Sign%20Car%201.jpeg', title: '' },
-      { img: 'https://images.unsplash.com/photo-1540324155974-7523202daa3f?auto=format&fit=crop&w=800&q=80', title: '' }
-    ];
-
-    const tickerContainer = document.getElementById('clientTicker');
-    const tickerHTML = clients.map(c => `<div class="ticker-item">${c}</div>`).join('');
-    tickerContainer.innerHTML = tickerHTML + tickerHTML;
-
-    function initCarousel(containerId, data) {
-      const track = document.querySelector(`#${containerId} .carousel-track`);
-      const dotsContainer = document.querySelector(`#${containerId} .dots`);
-      let activeIndex = 0;
-
-      data.forEach((item, i) => {
-        const slide = document.createElement('div');
-        slide.className = `carousel-slide ${i === activeIndex ? 'active' : ''}`;
-        slide.style.backgroundImage = `url('${item.img}')`;
-        
-        if (item.title) {
-          slide.innerHTML = `<div class="slide-overlay"><h3 class="text-xl font-bold text-white mb-2 uppercase">${item.title}</h3></div>`;
-        }
-
-        track.appendChild(slide);
-
-        const dot = document.createElement('div');
-        dot.className = `dot ${i === activeIndex ? 'active' : ''}`;
-        dot.addEventListener('click', () => goToSlide(i));
-        dotsContainer.appendChild(dot);
-      });
-
-      function updateActive() {
-        const slides = track.querySelectorAll('.carousel-slide');
-        const dots = dotsContainer.querySelectorAll('.dot');
-        
-        slides.forEach((slide, i) => {
-          const offset = i - activeIndex;
-          const absOffset = Math.abs(offset);
-          
-          if (absOffset > 2) {
-            slide.style.opacity = '0';
-            slide.style.pointerEvents = 'none';
-          } else {
-            slide.style.opacity = (absOffset === 0) ? '1' : (1 - absOffset * 0.4).toString();
-            slide.style.pointerEvents = (absOffset === 0) ? 'auto' : 'none';
-          }
-
-          const baseScale = window.innerWidth > 768 ? 1 : 0.9;
-          const scale = baseScale - absOffset * 0.15;
-          const translateOffset = window.innerWidth > 768 ? 90 : 105;
-          const translateX = `calc(-50% + ${offset * translateOffset}%)`;
-          
-          slide.style.transform = `translate(${translateX}, -50%) scale(${scale})`;
-          slide.style.filter = `blur(${absOffset * 5}px)`;
-          slide.style.zIndex = 10 - absOffset;
-          
-          slide.className = `carousel-slide ${i === activeIndex ? 'active' : ''}`;
-          dots[i].className = `dot ${i === activeIndex ? 'active' : ''}`;
-        });
-      }
-
-      function goToSlide(index) {
-        if (index < 0) index = data.length - 1;
-        if (index >= data.length) index = 0;
-        activeIndex = index;
-        updateActive();
-      }
-
-      document.querySelector(`#${containerId} .nav-prev`).addEventListener('click', () => goToSlide(activeIndex - 1));
-      document.querySelector(`#${containerId} .nav-next`).addEventListener('click', () => goToSlide(activeIndex + 1));
-      
-      updateActive();
-      window.addEventListener('resize', updateActive);
-    }
-    
-    initCarousel('homeCarousel', sliderData);
-
-    document.getElementById('leadForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      this.classList.add('hidden');
-      document.getElementById('formSuccess').classList.remove('hidden');
-    });
-  </script>
+  <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>
