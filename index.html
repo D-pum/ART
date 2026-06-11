@@ -182,8 +182,8 @@
     <div class="relative z-10 text-center px-6 max-w-5xl mx-auto pt-24">
       <p class="font-mono text-xs tracking-widest uppercase mb-6" style="color:#00f0ff; letter-spacing: 0.25em;">Est. 1995 &nbsp;·&nbsp; Kolkata, India &nbsp;·&nbsp; Regional Leader</p>
       <h1 class="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter leading-none uppercase mb-8">
-        Revolutionary<br class="hidden sm:block"> Vision.<br>
-        <span style="color:#00f0ff; -webkit-text-stroke: 0px; text-shadow: 0 0 60px rgba(0,240,255,0.35);">Artisanal </span><br class="hidden sm:block"> Spaces.
+        Deliver<br class="hidden sm:block"> Impact.<br>
+        <span style="color:#00f0ff; -webkit-text-stroke: 0px; text-shadow: 0 0 60px rgba(0,240,255,0.35);">Transform</span><br class="hidden sm:block"> Spaces.
       </h1>
       <p class="text-base md:text-lg text-zinc-400 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
         East India's foremost authority in advanced LED video walls, integrated IoT display infrastructure, and precision architectural signage.
@@ -279,7 +279,7 @@
       <div>
         <p class="font-mono text-xs uppercase tracking-widest mb-2" style="color:#00f0ff;">Certified Integration Partner</p>
         <div class="flex items-center gap-4">
-          <img src="/aistudio/logo.jpeg" alt="Dahua Technology" class="h-8 w-auto object-contain" style="filter: brightness(0) invert(1);" onerror="this.style.display='none'">
+          <img src="/aistudio/logo.jpg" alt="Dahua Technology" class="h-8 w-auto object-contain" style="filter: brightness(0) invert(1);" onerror="this.style.display='none'">
           <h3 class="text-2xl md:text-3xl font-black uppercase tracking-wide text-white">Dahua Technology</h3>
         </div>
         <p class="text-zinc-500 text-sm mt-2 max-w-md">Global-grade hardware infrastructure, enterprise ecosystem support, and certified engineer deployment across Eastern India.</p>
@@ -573,8 +573,6 @@
     tickerEl.innerHTML = tickerItems + tickerItems;
 
     // ── Unified Installation Gallery ──
-    const TOTAL_LED_IMAGES = 4;
-    const TOTAL_WORK_IMAGES = 7;
 
     const techData = [
       {
@@ -605,11 +603,8 @@
     ];
 
     const workData = [];
-    for (let i = 1; i <= TOTAL_LED_IMAGES; i++) {
-      workData.push({ img: `/aistudio/led${i}.jpeg` });
-    }
-    for (let i = 1; i <= TOTAL_WORK_IMAGES; i++) {
-      workData.push({ img: `/aistudio/work${i}.jpeg` });
+    for (let i = 1; i <= 11; i++) {
+      workData.push({ img: `/aistudio/${i}.jpg` });
     }
     // Fisher-Yates shuffle — random order on every page load
     for (let i = workData.length - 1; i > 0; i--) {
