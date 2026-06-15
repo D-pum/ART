@@ -88,6 +88,8 @@
     .tick { display:inline-flex; align-items:center; gap:0.6rem; }
     .tick::before { content:''; width:26px; height:1px; background:#1DE0C8; display:inline-block; }
     .eyebrow { font-family:'DM Mono',monospace; font-size:0.7rem; letter-spacing:0.22em; text-transform:uppercase; color:#1DE0C8; }
+    .tick-ember::before { background:#FF5B35; }
+    .eyebrow-ember { color:#FF5B35; }
 
     /* ── Nav ── */
     .nav-link { transition: color 0.25s; letter-spacing: 0.06em; color:#8A9296; }
@@ -212,17 +214,17 @@
     <video class="hero-video absolute inset-0 w-full h-full z-0" autoplay loop muted playsinline style="opacity:0.30;">
       <source src="assets/hero.mp4" type="video/mp4" />
     </video>
-    <div class="absolute inset-0 z-0" style="background:linear-gradient(to bottom, rgba(7,8,9,0.55) 0%, rgba(7,8,9,0.25) 40%, rgba(7,8,9,0.85) 88%, #070809 100%);"></div>
+    <div class="absolute inset-0 z-0" style="background:linear-gradient(to bottom, rgba(7,8,9,0.40) 0%, rgba(7,8,9,0.15) 40%, rgba(7,8,9,0.80) 88%, #070809 100%);"></div>
 
     <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pt-24">
       <p class="tick eyebrow mb-7">East India · Display &amp; Signage · Since 1995</p>
-      <h1 class="font-display font-bold tracking-tight leading-[0.92] uppercase mb-8" style="font-size:clamp(2.8rem,8vw,7rem); color:#E8E6E1;">
-        We build<br>
-        <span style="color:#1DE0C8;">light</span> that<br>
-        means business.
+      <h1 class="font-display font-bold tracking-tight leading-[0.92] uppercase mb-8" style="font-size:clamp(2.6rem,7vw,6.2rem); color:#E8E6E1;">
+        We <span style="color:#FF5B35;">transform</span><br>
+        commercial <span style="color:#1DE0C8;">spaces</span><br>
+        across East India.
       </h1>
       <p class="text-base md:text-lg mb-10 max-w-xl font-light leading-relaxed" style="color:#8A9296;">
-        Commercial LED video walls, fine-pitch displays, and precision-fabricated signage — engineered, calibrated, and installed across Eastern India for three decades.
+        For three decades, we've delivered exactly what our clients picture — commercial LED video walls, fine-pitch displays, and precision-fabricated signage, engineered and installed end to end.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
         <a href="led-systems.html" class="inline-block font-mono text-sm uppercase tracking-widest px-8 py-4 transition-all duration-200 hover:brightness-95" style="background:#1DE0C8; color:#070809;">Explore LED Systems</a>
@@ -267,7 +269,7 @@
       </div>
       <div class="grid md:grid-cols-2 gap-6">
 
-        <a href="led-systems.html" class="pillar-card group relative h-[480px] rounded-lg overflow-hidden block border" style="border-color:#1E2426;">
+        <a href="#techCarousel-section" class="pillar-card group relative h-[480px] rounded-lg overflow-hidden block border" style="border-color:#1E2426;">
           <div class="pillar-img absolute inset-0 bg-cover bg-center" style="background-image:url('assets/led.jpeg'); opacity:0.42;"></div>
           <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(7,8,9,0.98) 0%, rgba(7,8,9,0.4) 55%, transparent 100%);"></div>
           <div class="absolute top-0 left-0 w-1 h-full" style="background:linear-gradient(to bottom,#1DE0C8,transparent);"></div>
@@ -276,7 +278,7 @@
             <h3 class="text-3xl md:text-4xl font-display font-bold uppercase leading-tight mb-3" style="color:#E8E6E1;">LED &amp; IoT<br>Systems</h3>
             <p class="text-sm leading-relaxed mb-6 max-w-sm" style="color:#8A9296;">Indoor and outdoor video walls, fine-pitch displays, rental LED, and smart digital infrastructure — specified to the pitch, calibrated to the room.</p>
             <span class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest transition-all duration-200 group-hover:gap-3" style="color:#1DE0C8;">
-              Explore Systems
+              See the Display Matrix
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </div>
@@ -363,7 +365,7 @@
   <!-- ═══════════════ WORK CAROUSEL ═══════════════ -->
   <section id="workCarousel-section" class="py-28" style="background:#0E1113; border-top:1px solid #141819; border-bottom:1px solid #141819;">
     <div class="max-w-7xl mx-auto px-6 mb-14 reveal">
-      <p class="tick eyebrow mb-4">Selected Work</p>
+      <p class="tick tick-ember eyebrow eyebrow-ember mb-4">Selected Work</p>
       <h2 class="text-3xl md:text-4xl font-display font-bold uppercase tracking-tight" style="color:#E8E6E1;">Built, lit, delivered.</h2>
     </div>
     <div class="carousel-container" id="workCarousel">
