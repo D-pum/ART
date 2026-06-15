@@ -173,6 +173,8 @@
       .ticker{ animation:none; }
       html{ scroll-behavior:auto; }
     }
+    .calltap{position:fixed;right:18px;bottom:18px;z-index:60;background:#1DE0C8;color:#070809;border-radius:50px;padding:0.85rem 1.3rem;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 24px rgba(0,0,0,0.5);transition:filter 0.2s;}
+    .calltap:hover{filter:brightness(0.92);}
   </style>
 </head>
 <body>
@@ -187,6 +189,7 @@
       <nav class="hidden md:flex items-center gap-8 text-xs font-mono tracking-widest uppercase">
         <a href="index.html" class="nav-link active">Home</a>
         <a href="led-systems.html" class="nav-link">LED &amp; IoT</a>
+        <a href="signage.html" class="nav-link">Signage</a>
         <a href="#workCarousel" class="nav-link">Work</a>
         <a href="#quote" class="ml-2 px-5 py-2.5 font-medium text-xs uppercase tracking-widest transition-all duration-200 hover:brightness-95" style="background:#1DE0C8; color:#070809;">Get a Quote</a>
       </nav>
@@ -203,6 +206,7 @@
     <nav class="flex flex-col gap-6 mt-4">
       <a href="index.html" class="text-3xl font-display font-bold uppercase tracking-tight" style="color:#E8E6E1;" onclick="closeMenu()">Home</a>
       <a href="led-systems.html" class="text-3xl font-display font-bold uppercase tracking-tight" style="color:#8A9296;" onclick="closeMenu()">LED &amp; IoT</a>
+      <a href="signage.html" class="text-3xl font-display font-bold uppercase tracking-tight" style="color:#8A9296;" onclick="closeMenu()">Signage</a>
       <a href="#workCarousel" class="text-3xl font-display font-bold uppercase tracking-tight" style="color:#8A9296;" onclick="closeMenu()">Work</a>
       <a href="#quote" class="mt-4 inline-block text-sm font-medium uppercase tracking-widest px-6 py-4 text-center" style="background:#1DE0C8; color:#070809;" onclick="closeMenu()">Get a Quote</a>
     </nav>
@@ -227,8 +231,8 @@
         For three decades, we've delivered exactly what our clients picture — commercial LED video walls, fine-pitch displays, and precision-fabricated signage, engineered and installed end to end.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
-        <a href="led-systems.html" class="inline-block font-mono text-sm uppercase tracking-widest px-8 py-4 transition-all duration-200 hover:brightness-95" style="background:#1DE0C8; color:#070809;">Explore LED Systems</a>
-        <a href="#quote" class="inline-block font-mono text-sm uppercase tracking-widest px-8 py-4 border transition-all duration-200" style="border-color:#2A3236; color:#E8E6E1;" onmouseover="this.style.borderColor='#1DE0C8'" onmouseout="this.style.borderColor='#2A3236'">Get a Quote</a>
+        <a href="#quote" class="inline-block font-mono text-sm uppercase tracking-widest px-8 py-4 transition-all duration-200 hover:brightness-95" style="background:#1DE0C8; color:#070809;">Get a Quote</a>
+        <a href="#workCarousel" class="inline-block font-mono text-sm uppercase tracking-widest px-8 py-4 border transition-all duration-200" style="border-color:#2A3236; color:#E8E6E1;" onmouseover="this.style.borderColor='#1DE0C8'" onmouseout="this.style.borderColor='#2A3236'">See Our Work</a>
       </div>
     </div>
 
@@ -245,10 +249,12 @@
         <div class="text-5xl stat-value font-bold" style="color:#1DE0C8;">30<span class="text-2xl align-top">+</span></div>
         <div class="text-xs font-mono uppercase tracking-widest mt-2" style="color:#8A9296;">Years Active</div>
       </div>
-      <div class="reveal">
-        <div class="text-5xl stat-value font-bold" style="color:#E8E6E1;">500<span class="text-2xl align-top">+</span></div>
-        <div class="text-xs font-mono uppercase tracking-widest mt-2" style="color:#8A9296;">Projects Delivered</div>
-      </div>
+      <a href="#workCarousel" class="reveal block group">
+        <div class="text-5xl stat-value font-bold transition-colors group-hover:text-teal" style="color:#E8E6E1;">500<span class="text-2xl align-top">+</span></div>
+        <div class="text-xs font-mono uppercase tracking-widest mt-2 inline-flex items-center gap-1" style="color:#8A9296;">Projects Delivered
+          <svg width="11" height="11" viewBox="0 0 16 16" fill="none" class="opacity-60"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
       <div class="reveal">
         <div class="text-5xl stat-value font-bold" style="color:#E8E6E1;">50<span class="text-2xl align-top">+</span></div>
         <div class="text-xs font-mono uppercase tracking-widest mt-2" style="color:#8A9296;">Brand Partners</div>
@@ -284,7 +290,7 @@
           </div>
         </a>
 
-        <a href="#workCarousel" class="pillar-card group relative h-[480px] rounded-lg overflow-hidden block border" style="border-color:#1E2426;">
+        <a href="signage.html" class="pillar-card group relative h-[480px] rounded-lg overflow-hidden block border" style="border-color:#1E2426;">
           <div class="pillar-img absolute inset-0 bg-cover bg-center" style="background-image:url('assets/artisan-signage.jpeg'); opacity:0.42;"></div>
           <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(7,8,9,0.98) 0%, rgba(7,8,9,0.4) 55%, transparent 100%);"></div>
           <div class="absolute top-0 left-0 w-1 h-full" style="background:linear-gradient(to bottom,#FF5B35,transparent);"></div>
@@ -423,7 +429,7 @@
       <div class="mb-12 reveal">
         <p class="tick eyebrow mb-4">Direct Enquiry</p>
         <h2 class="text-3xl md:text-4xl font-display font-bold uppercase tracking-tight" style="color:#E8E6E1;">Request a Quote</h2>
-        <p class="text-sm mt-4" style="color:#8A9296;">We reply within one business day. Every enquiry is confidential.</p>
+        <p class="text-sm mt-4" style="color:#8A9296;">We reply within one business day. Free site survey for projects in and around Kolkata — no obligation. Every enquiry is confidential.</p>
       </div>
 
       <!-- NOTE: replace the action URL below with your real Formspree endpoint.
@@ -503,6 +509,11 @@
     </div>
   </footer>
 
+  <a href="tel:+919147720104" class="calltap" aria-label="Call Artisan & Co.">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C9.6 21 3 14.4 3 6c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.2 2.2z" fill="currentColor"/></svg>
+    Call Us
+  </a>
+
   <script>
     // ── Mobile menu ──
     const menuBtn=document.getElementById('menuBtn'), mobileMenu=document.getElementById('mobileMenu');
@@ -525,18 +536,18 @@
       {img:'assets/display_iot.jpeg',kicker:'IoT · Smart Display',title:'Smart Display &amp; IoT',spec:'IFPDs, digital standees, kiosks, and centralised content management',link:'led-systems.html#iot'},
     ];
 
-    // PLACEHOLDER site names + service — swap for real client names later.
+    // Real projects — kicker is the main heading, spec is the service line. No client-site numbering.
     const workData=[
-      {img:'assets/2.jpg', kicker:'Retail Showroom', title:'Client Site One', spec:'Illuminated Storefront Signage'},
-      {img:'assets/3.jpg', kicker:'Retail Facade',   title:'Client Site Two', spec:'Facade Display &amp; Branding'},
-      {img:'assets/1.jpeg',kicker:'Public Space',    title:'Client Site Three',spec:'Outdoor LED Video Wall'},
-      {img:'assets/8.jpg', kicker:'Residential Estate',title:'Client Site Four',spec:'Monolith Pylon Signage'},
-      {img:'assets/9.jpg', kicker:'Retail Interior', title:'Client Site Five', spec:'Store Interior Branding'},
-      {img:'assets/4.jpg', kicker:'Facility',        title:'Client Site Six',  spec:'Wayfinding Signage System'},
-      {img:'assets/6.jpg', kicker:'Roadside',        title:'Client Site Seven',spec:'Outdoor Digital Display'},
-      {img:'assets/11.jpg',kicker:'Estate',          title:'Client Site Eight',spec:'Estate Wayfinding & Identity'},
-      {img:'assets/5.jpg', kicker:'Parking Complex', title:'Client Site Nine', spec:'Zone & Entry Signage'},
-      {img:'assets/10.jpg',kicker:'On-Site',         title:'Client Site Ten',  spec:'Integration & Installation'},
+      {img:'assets/sign-multibrand-fascia.jpg', kicker:'Multi-Brand Retail Store', spec:'Illuminated Storefront Fascia'},
+      {img:'assets/led-wall-service.jpg',        kicker:'Footwear Showroom',       spec:'Indoor LED Video Wall'},
+      {img:'assets/sign-rj-letters.jpg',         kicker:'Brand Lobby',             spec:'3D Channel Letters'},
+      {img:'assets/led-outdoor-pole.jpg',        kicker:'Roadside OOH',            spec:'Outdoor LED Display'},
+      {img:'assets/sign-mayabandhan-neon.jpg',   kicker:'Hospitality Venue',       spec:'Neon-Style Entrance Sign'},
+      {img:'assets/sign-pylon-gallery.jpg',      kicker:'Residential Estate',      spec:'Monolith Wayfinding Pylon'},
+      {img:'assets/led-curved-counter.jpg',      kicker:'Retail Reception',        spec:'Curved LED Counter'},
+      {img:'assets/sign-ajanta-lightbox.jpg',    kicker:'Footwear Retail',         spec:'Illuminated Lightbox'},
+      {img:'assets/fab-workshop-letters.jpg',    kicker:'In-House Workshop',       spec:'Letter Fabrication'},
+      {img:'assets/sign-kingtec-window.jpg',     kicker:'Showroom Window',         spec:'In-Shop Branding Graphics'},
       {isMore:true, title:'+ many more projects', spec:'500+ delivered across 4 states', kicker:'Since 1995'},
     ];
 
@@ -566,12 +577,20 @@
         } else {
           const blur=`<div class="slide-bg-blur" style="background-image:url('${item.img}');"></div>`;
           const photo=`<div class="slide-photo" style="background-image:url('${item.img}');"></div>`;
-          const overlay=`<div class="slide-overlay">
-            ${item.kicker?`<p class="slide-kicker">${item.kicker}</p>`:''}
-            <h3 class="text-xl md:text-2xl font-display font-bold uppercase leading-tight mb-1" style="color:#E8E6E1;">${item.title}</h3>
-            ${item.spec?`<p class="text-sm" style="color:#8A9296;">${item.spec}</p>`:''}
-            ${opts.enquire?`<button class="slide-enquire" data-link="${item.link}">View Specs &rsaquo;</button>`:''}
-          </div>`;
+          let overlay;
+          if(opts.kickerAsHeading){
+            overlay=`<div class="slide-overlay">
+              <h3 class="text-xl md:text-2xl font-display font-bold uppercase leading-tight mb-1" style="color:#E8E6E1;">${item.kicker}</h3>
+              ${item.spec?`<p class="slide-kicker" style="margin-bottom:0;">${item.spec}</p>`:''}
+            </div>`;
+          } else {
+            overlay=`<div class="slide-overlay">
+              ${item.kicker?`<p class="slide-kicker">${item.kicker}</p>`:''}
+              <h3 class="text-xl md:text-2xl font-display font-bold uppercase leading-tight mb-1" style="color:#E8E6E1;">${item.title}</h3>
+              ${item.spec?`<p class="text-sm" style="color:#8A9296;">${item.spec}</p>`:''}
+              ${opts.enquire?`<button class="slide-enquire" data-link="${item.link}">View Specs &rsaquo;</button>`:''}
+            </div>`;
+          }
           slide.innerHTML=blur+photo+overlay;
           // navigation: LED → product page, work → quote form
           if(item.link){slide.addEventListener('click',()=>{window.location.href=item.link;});}
@@ -622,7 +641,7 @@
     }
 
     initCarousel('techCarousel',techData,{enquire:true});
-    initCarousel('workCarousel',workData,{});
+    initCarousel('workCarousel',workData,{kickerAsHeading:true});
 
     // ── Client ticker ──
     const clients=['Tommy Hilfiger','Celio','Reliance Retail','Allen Solly','Mothercare','Adidas','Bandhan Bank','Jaguar','Colortile'];

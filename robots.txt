@@ -1,1 +1,4 @@
+User-agent: *
+Allow: /
+
 Sitemap: https://artisanco.biz/sitemap.xml
