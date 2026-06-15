@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LED &amp; IoT Display Systems — Fine-Pitch, Outdoor, Rental | Artisan &amp; Co.</title>
+  <meta name="description" content="Indoor fine-pitch and outdoor LED video walls, rental LED, and IoT display infrastructure. Specified by pixel pitch and use case. Supplied and installed across Eastern India by Artisan & Co." />
+  <meta name="theme-color" content="#070809" />
+  <link rel="canonical" href="https://artisanco.biz/led-systems.html" />
+  <meta property="og:title" content="LED & IoT Display Systems | Artisan & Co." />
+  <meta property="og:description" content="Fine-pitch, outdoor, and rental LED systems specified by use case." />
+  <meta property="og:url" content="https://artisanco.biz/led-systems.html" />
+  <meta property="og:image" content="https://artisanco.biz/assets/p2.5.jpeg" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config={theme:{extend:{colors:{base:'#070809',panel:'#0E1113',panel2:'#141819',line:'#1E2426',paper:'#E8E6E1',muted:'#8A9296',teal:'#1DE0C8',tealdim:'#0FA593',ember:'#FF5B35'},fontFamily:{display:['Space Grotesk','sans-serif'],sans:['Inter','sans-serif'],mono:['DM Mono','monospace']}}}}
+  </script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background:#070809;color:#E8E6E1;font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+    h1,h2,h3,.font-display{font-family:'Space Grotesk',sans-serif;}
+    .calib-grid{background-image:linear-gradient(rgba(232,230,225,0.022) 1px,transparent 1px),linear-gradient(90deg,rgba(232,230,225,0.022) 1px,transparent 1px);background-size:46px 46px;}
+    .tick{display:inline-flex;align-items:center;gap:0.6rem;}
+    .tick::before{content:'';width:26px;height:1px;background:#1DE0C8;display:inline-block;}
+    .eyebrow{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:#1DE0C8;}
+    .nav-link{transition:color 0.25s;letter-spacing:0.06em;color:#8A9296;}
+    .nav-link:hover,.nav-link.active{color:#E8E6E1;}
+    .mobile-menu{transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);}
+    .mobile-menu.open{transform:translateX(0);}
+    input:focus,textarea:focus,select:focus{border-color:#1DE0C8!important;outline:none;box-shadow:0 0 0 2px rgba(29,224,200,0.1);}
+    .spec-row{display:flex;justify-content:space-between;padding:0.7rem 0;border-bottom:1px solid #1E2426;font-size:0.875rem;}
+    .spec-row span:first-child{color:#8A9296;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;}
+    .spec-row span:last-child{color:#E8E6E1;text-align:right;}
+    .prod-img{border-radius:10px;border:1px solid #1E2426;background:#0E1113;overflow:hidden;position:relative;aspect-ratio:4/3;}
+    .prod-img .blur{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(26px) brightness(0.42);transform:scale(1.18);}
+    .prod-img .photo{position:absolute;inset:0;background-size:contain;background-position:center;background-repeat:no-repeat;}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    /* anchor offset so sticky nav doesn't cover section tops */
+    .prod-section{scroll-margin-top:90px;}
+    @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}html{scroll-behavior:auto;}}
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300" style="background:rgba(7,8,9,0.85);border-bottom:1px solid #141819;backdrop-filter:blur(14px);">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <span class="text-xl font-display font-bold tracking-tight uppercase leading-none" style="color:#E8E6E1;">Artisan<span style="color:#1DE0C8;">&amp;Co.</span></span>
+        <span class="hidden sm:block text-[10px] font-mono uppercase tracking-widest leading-tight border-l pl-3" style="color:#8A9296;border-color:#1E2426;">Est. 1995<br>Kolkata</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-xs font-mono tracking-widest uppercase">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="led-systems.html" class="nav-link active">LED &amp; IoT</a>
+        <a href="index.html#workCarousel" class="nav-link">Work</a>
+        <a href="#quote" class="ml-2 px-5 py-2.5 font-medium text-xs uppercase tracking-widest transition-all duration-200 hover:brightness-95" style="background:#1DE0C8;color:#070809;">Get a Quote</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2 z-50" aria-label="Open menu">
+        <span class="block w-6 h-0.5 transition-all" style="background:#E8E6E1;" id="bar1"></span>
+        <span class="block w-6 h-0.5 transition-all" style="background:#E8E6E1;" id="bar2"></span>
+        <span class="block w-4 h-0.5 transition-all" style="background:#E8E6E1;" id="bar3"></span>
+      </button>
+    </div>
+  </header>
+  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-40 flex flex-col pt-24 px-8 pb-12" style="background:rgba(7,8,9,0.98);backdrop-filter:blur(20px);">
+    <nav class="flex flex-col gap-6 mt-4">
+      <a href="index.html" class="text-3xl font-display font-bold uppercase tracking-tight" style="color:#8A9296;" onclick="closeMenu()">Home</a>
+      <a href="led-systems.html" class="text-3xl font-display font-bold uppercase tracking-tight" style="color:#E8E6E1;" onclick="closeMenu()">LED &amp; IoT</a>
+      <a href="index.html#workCarousel" class="text-3xl font-display font-bold uppercase tracking-tight" style="color:#8A9296;" onclick="closeMenu()">Work</a>
+      <a href="#quote" class="mt-4 inline-block text-sm font-medium uppercase tracking-widest px-6 py-4 text-center" style="background:#1DE0C8;color:#070809;" onclick="closeMenu()">Get a Quote</a>
+    </nav>
+    <div class="mt-auto text-xs font-mono" style="color:#3A4245;">+91-9147720104 · admn@artisanco.biz</div>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative pt-36 pb-20 px-6 calib-grid" style="border-bottom:1px solid #141819;">
+    <div class="max-w-7xl mx-auto">
+      <p class="tick eyebrow mb-6">Active Display Division</p>
+      <h1 class="font-display font-bold tracking-tight leading-[0.95] uppercase mb-6" style="font-size:clamp(2.4rem,6vw,5rem);color:#E8E6E1;">LED &amp; IoT<br><span style="color:#1DE0C8;">Display Systems</span></h1>
+      <p class="text-base md:text-lg max-w-2xl font-light leading-relaxed" style="color:#8A9296;">Every wall starts with one question — what's the viewing distance? From there we pick the pitch, the brightness, and the cabinet. Below is the range we specify, supply, and install across Eastern India.</p>
+    </div>
+  </section>
+
+  <!-- QUICK NAV -->
+  <div class="sticky top-20 z-30 px-6 py-4" style="background:rgba(14,17,19,0.92);border-bottom:1px solid #141819;backdrop-filter:blur(10px);">
+    <div class="max-w-7xl mx-auto flex gap-2 md:gap-3 overflow-x-auto text-xs font-mono uppercase tracking-widest" style="color:#8A9296;">
+      <a href="#p1-86" class="whitespace-nowrap px-3 py-1.5 border rounded transition-all" style="border-color:#1E2426;" onmouseover="this.style.color='#1DE0C8';this.style.borderColor='#1DE0C8'" onmouseout="this.style.color='#8A9296';this.style.borderColor='#1E2426'">P1.86</a>
+      <a href="#p2-5" class="whitespace-nowrap px-3 py-1.5 border rounded transition-all" style="border-color:#1E2426;" onmouseover="this.style.color='#1DE0C8';this.style.borderColor='#1DE0C8'" onmouseout="this.style.color='#8A9296';this.style.borderColor='#1E2426'">P2.5</a>
+      <a href="#p4" class="whitespace-nowrap px-3 py-1.5 border rounded transition-all" style="border-color:#1E2426;" onmouseover="this.style.color='#1DE0C8';this.style.borderColor='#1DE0C8'" onmouseout="this.style.color='#8A9296';this.style.borderColor='#1E2426'">P4 Outdoor</a>
+      <a href="#rental" class="whitespace-nowrap px-3 py-1.5 border rounded transition-all" style="border-color:#1E2426;" onmouseover="this.style.color='#1DE0C8';this.style.borderColor='#1DE0C8'" onmouseout="this.style.color='#8A9296';this.style.borderColor='#1E2426'">Rental</a>
+      <a href="#iot" class="whitespace-nowrap px-3 py-1.5 border rounded transition-all" style="border-color:#1E2426;" onmouseover="this.style.color='#1DE0C8';this.style.borderColor='#1DE0C8'" onmouseout="this.style.color='#8A9296';this.style.borderColor='#1E2426'">Smart / IoT</a>
+    </div>
+  </div>
+
+  <!-- PRODUCT SECTIONS -->
+  <main class="max-w-7xl mx-auto px-6 py-20 space-y-28">
+
+    <!-- P1.86 -->
+    <section id="p1-86" class="prod-section grid md:grid-cols-2 gap-12 items-center reveal">
+      <div class="prod-img"><div class="blur" style="background-image:url('assets/p1.86.jpeg');"></div><div class="photo" style="background-image:url('assets/p1.86.jpeg');"></div></div>
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#1DE0C8;">P1.86 · Fine Pitch · Indoor</p>
+        <h2 class="text-3xl md:text-4xl font-display font-bold uppercase mb-4" style="color:#E8E6E1;">Ultra-Fine Pitch Indoor LED</h2>
+        <p class="text-sm leading-relaxed mb-6" style="color:#8A9296;">When viewers stand close and detail matters, a 1.86mm pitch holds up. Built for boardrooms, broadcast studios, control rooms, and flagship retail where the screen is part of the architecture, not just a sign.</p>
+        <div class="mb-6">
+          <div class="spec-row"><span>Pixel Pitch</span><span>1.86 mm</span></div>
+          <div class="spec-row"><span>Placement</span><span>Indoor</span></div>
+          <div class="spec-row"><span>Best For</span><span>Boardrooms · Studios · Premium Retail</span></div>
+          <div class="spec-row"><span>Viewing Distance</span><span>From ~1.8 m</span></div>
+        </div>
+        <a href="#quote" class="inline-block font-mono text-xs uppercase tracking-widest px-6 py-3 transition-all" style="background:#1DE0C8;color:#070809;">Enquire about P1.86</a>
+      </div>
+    </section>
+
+    <!-- P2.5 -->
+    <section id="p2-5" class="prod-section grid md:grid-cols-2 gap-12 items-center reveal">
+      <div class="md:order-2 prod-img"><div class="blur" style="background-image:url('assets/p2.5.jpeg');"></div><div class="photo" style="background-image:url('assets/p2.5.jpeg');"></div></div>
+      <div class="md:order-1">
+        <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#1DE0C8;">P2.5 · Indoor · Commercial</p>
+        <h2 class="text-3xl md:text-4xl font-display font-bold uppercase mb-4" style="color:#E8E6E1;">Premium Indoor Video Wall</h2>
+        <p class="text-sm leading-relaxed mb-6" style="color:#8A9296;">The commercial workhorse. A 2.5mm pitch balances image quality and value for medium viewing distances — retail showrooms, hotel lobbies, hospitality, and stadium concourses where the wall runs all day.</p>
+        <div class="mb-6">
+          <div class="spec-row"><span>Pixel Pitch</span><span>2.5 mm</span></div>
+          <div class="spec-row"><span>Placement</span><span>Indoor</span></div>
+          <div class="spec-row"><span>Best For</span><span>Showrooms · Hospitality · Concourses</span></div>
+          <div class="spec-row"><span>Viewing Distance</span><span>From ~2.5 m</span></div>
+        </div>
+        <a href="#quote" class="inline-block font-mono text-xs uppercase tracking-widest px-6 py-3 transition-all" style="background:#1DE0C8;color:#070809;">Enquire about P2.5</a>
+      </div>
+    </section>
+
+    <!-- P4 OUTDOOR -->
+    <section id="p4" class="prod-section grid md:grid-cols-2 gap-12 items-center reveal">
+      <div class="prod-img"><div class="blur" style="background-image:url('assets/p4.jpeg');"></div><div class="photo" style="background-image:url('assets/p4.jpeg');"></div></div>
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#1DE0C8;">P4 · Outdoor · IP67</p>
+        <h2 class="text-3xl md:text-4xl font-display font-bold uppercase mb-4" style="color:#E8E6E1;">Outdoor High-Brightness LED</h2>
+        <p class="text-sm leading-relaxed mb-6" style="color:#8A9296;">Engineered for sunlight and weather. High-nit output stays readable at noon; an IP67-rated cabinet shrugs off rain and dust. The choice for OOH hoardings, building facades, and landmark installations.</p>
+        <div class="mb-6">
+          <div class="spec-row"><span>Pixel Pitch</span><span>4 mm</span></div>
+          <div class="spec-row"><span>Placement</span><span>Outdoor</span></div>
+          <div class="spec-row"><span>Weather Rating</span><span>IP67</span></div>
+          <div class="spec-row"><span>Best For</span><span>OOH · Facades · Landmarks</span></div>
+        </div>
+        <a href="#quote" class="inline-block font-mono text-xs uppercase tracking-widest px-6 py-3 transition-all" style="background:#1DE0C8;color:#070809;">Enquire about P4 Outdoor</a>
+      </div>
+    </section>
+
+    <!-- RENTAL -->
+    <section id="rental" class="prod-section grid md:grid-cols-2 gap-12 items-center reveal">
+      <div class="md:order-2 prod-img"><div class="blur" style="background-image:url('assets/Rental.jpeg');"></div><div class="photo" style="background-image:url('assets/Rental.jpeg');"></div></div>
+      <div class="md:order-1">
+        <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#FF5B35;">P3.9 · Rental · Die-Cast</p>
+        <h2 class="text-3xl md:text-4xl font-display font-bold uppercase mb-4" style="color:#E8E6E1;">Rental LED Module</h2>
+        <p class="text-sm leading-relaxed mb-6" style="color:#8A9296;">Light die-cast aluminium cabinets with fast-lock corners — they go up fast, fly flat, and survive the road. Built for concerts, corporate events, exhibitions, and stage backdrops, with crew and live calibration on the day.</p>
+        <div class="mb-6">
+          <div class="spec-row"><span>Pixel Pitch</span><span>3.9 mm</span></div>
+          <div class="spec-row"><span>Cabinet</span><span>Die-Cast Aluminium · Fast-Lock</span></div>
+          <div class="spec-row"><span>Best For</span><span>Concerts · Events · Exhibitions</span></div>
+          <div class="spec-row"><span>Service</span><span>Crew + Live Calibration</span></div>
+        </div>
+        <a href="#quote" class="inline-block font-mono text-xs uppercase tracking-widest px-6 py-3 transition-all" style="background:#FF5B35;color:#070809;">Enquire about Rental</a>
+      </div>
+    </section>
+
+    <!-- IOT -->
+    <section id="iot" class="prod-section grid md:grid-cols-2 gap-12 items-center reveal">
+      <div class="prod-img"><div class="blur" style="background-image:url('assets/display_iot.jpeg');"></div><div class="photo" style="background-image:url('assets/display_iot.jpeg');"></div></div>
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#1DE0C8;">Smart Display · IoT</p>
+        <h2 class="text-3xl md:text-4xl font-display font-bold uppercase mb-4" style="color:#E8E6E1;">Smart Display &amp; IoT</h2>
+        <p class="text-sm leading-relaxed mb-6" style="color:#8A9296;">Beyond the wall: interactive flat panels, digital standees, self-service kiosks, and sensor-driven displays — tied together by centralised content management so you push the right screen, in the right place, from one dashboard.</p>
+        <div class="mb-6">
+          <div class="spec-row"><span>Formats</span><span>IFPD · Standee · Kiosk</span></div>
+          <div class="spec-row"><span>Management</span><span>Centralised CMS</span></div>
+          <div class="spec-row"><span>Integration</span><span>Sensor &amp; Network Driven</span></div>
+          <div class="spec-row"><span>Best For</span><span>Retail · Wayfinding · Self-Service</span></div>
+        </div>
+        <a href="#quote" class="inline-block font-mono text-xs uppercase tracking-widest px-6 py-3 transition-all" style="background:#1DE0C8;color:#070809;">Enquire about Smart / IoT</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PARTNER -->
+  <section class="py-20 px-6" style="background:#0E1113;border-top:1px solid #141819;border-bottom:1px solid #141819;">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 reveal">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest mb-2" style="color:#1DE0C8;">Certified Integration Partner</p>
+        <div class="flex items-center gap-4">
+          <img src="assets/logo.jpeg" alt="Dahua Technology" class="h-8 w-auto object-contain" style="filter:brightness(0) invert(1);" onerror="this.style.display='none'">
+          <h3 class="text-2xl md:text-3xl font-display font-bold uppercase tracking-wide" style="color:#E8E6E1;">Dahua Technology</h3>
+        </div>
+        <p class="text-sm mt-2 max-w-md" style="color:#8A9296;">Enterprise hardware ecosystem and certified engineer deployment behind our integration work.</p>
+      </div>
+      <div class="flex gap-10 text-center">
+        <div><div class="text-2xl font-display font-bold" style="color:#1DE0C8;">IP67</div><div class="font-mono text-xs uppercase tracking-wider mt-1" style="color:#8A9296;">Outdoor Rated</div></div>
+        <div><div class="text-2xl font-display font-bold" style="color:#E8E6E1;">4K</div><div class="font-mono text-xs uppercase tracking-wider mt-1" style="color:#8A9296;">Max Resolution</div></div>
+        <div><div class="text-2xl font-display font-bold" style="color:#E8E6E1;">24/7</div><div class="font-mono text-xs uppercase tracking-wider mt-1" style="color:#8A9296;">Support SLA</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section id="quote" class="py-28 px-6" style="background:#070809;">
+    <div class="max-w-2xl mx-auto">
+      <div class="mb-12 reveal">
+        <p class="tick eyebrow mb-4">Direct Enquiry</p>
+        <h2 class="text-3xl md:text-4xl font-display font-bold uppercase tracking-tight" style="color:#E8E6E1;">Request an LED Quote</h2>
+        <p class="text-sm mt-4" style="color:#8A9296;">Tell us the space and the pitch you're after — or just the space, and we'll recommend one. We reply within one business day.</p>
+      </div>
+      <!-- NOTE: replace action URL with your real Formspree endpoint (see index.html note). -->
+      <form id="leadForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-5 p-8 border rounded-lg" style="border-color:#1E2426;background:#0E1113;">
+        <input type="hidden" name="_subject" value="LED enquiry — artisanco.biz" />
+        <input type="hidden" name="division" value="led" />
+        <div class="grid md:grid-cols-2 gap-5">
+          <div>
+            <label for="name" class="block font-mono text-xs uppercase tracking-widest mb-2" style="color:#1DE0C8;">Full Name</label>
+            <input id="name" type="text" name="name" required placeholder="Your name" class="w-full p-3 rounded text-sm border transition-all" style="background:#070809;border-color:#1E2426;color:#E8E6E1;" />
+          </div>
+          <div>
+            <label for="email" class="block font-mono text-xs uppercase tracking-widest mb-2" style="color:#1DE0C8;">Email</label>
+            <input id="email" type="email" name="email" required placeholder="you@company.com" class="w-full p-3 rounded text-sm border transition-all" style="background:#070809;border-color:#1E2426;color:#E8E6E1;" />
+          </div>
+        </div>
+        <div>
+          <label for="phone" class="block font-mono text-xs uppercase tracking-widest mb-2" style="color:#1DE0C8;">Phone</label>
+          <input id="phone" type="tel" name="phone" required placeholder="+91 00000 00000" class="w-full p-3 rounded text-sm border transition-all" style="background:#070809;border-color:#1E2426;color:#E8E6E1;" />
+        </div>
+        <div>
+          <label for="details" class="block font-mono text-xs uppercase tracking-widest mb-2" style="color:#1DE0C8;">Project Details</label>
+          <textarea id="details" name="details" rows="5" required placeholder="Location, approximate wall size, indoor/outdoor, timeline…" class="w-full p-3 rounded text-sm border transition-all resize-none" style="background:#070809;border-color:#1E2426;color:#E8E6E1;"></textarea>
+        </div>
+        <button type="submit" class="w-full font-mono text-sm uppercase tracking-widest py-4 transition-all duration-200 hover:brightness-95" style="background:#1DE0C8;color:#070809;">Send Enquiry</button>
+      </form>
+      <div id="formSuccess" class="hidden mt-6 p-6 rounded border text-center text-sm" style="background:rgba(29,224,200,0.06);border-color:rgba(29,224,200,0.3);color:#1DE0C8;">Enquiry received. We'll be in touch within one business day.</div>
+      <div id="formError" class="hidden mt-6 p-6 rounded border text-center text-sm" style="background:rgba(255,91,53,0.06);border-color:rgba(255,91,53,0.3);color:#FF5B35;">Something went wrong sending that. Email us at admn@artisanco.biz or call +91-9147720104.</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="px-6 pt-20 pb-10" style="background:#070809;border-top:1px solid #141819;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-12 pb-12" style="border-bottom:1px solid #141819;">
+        <div>
+          <div class="text-2xl font-display font-bold tracking-tight uppercase mb-4" style="color:#E8E6E1;">Artisan<span style="color:#1DE0C8;">&amp;Co.</span></div>
+          <p class="text-sm leading-relaxed mb-6" style="color:#8A9296;">M/S Artisan &amp; Co. &nbsp;|&nbsp; Inex Works Pvt. Ltd.<br>East India's commercial display and architectural signage firm since 1995.</p>
+          <a href="index.html" class="font-mono text-xs uppercase tracking-widest px-3 py-2 border transition-all inline-block" style="border-color:#1E2426;color:#8A9296;" onmouseover="this.style.color='#E8E6E1';this.style.borderColor='#2A3236'" onmouseout="this.style.color='#8A9296';this.style.borderColor='#1E2426'">← Back Home</a>
+        </div>
+        <div>
+          <p class="font-mono text-xs uppercase tracking-widest mb-5" style="color:#1DE0C8;">Contact</p>
+          <div class="space-y-4 text-sm" style="color:#8A9296;">
+            <div><div class="text-xs font-bold uppercase tracking-wider mb-1" style="color:#E8E6E1;">Address</div><div>H9HJ+XF5, Narkeldanga,<br>Kolkata, West Bengal 700011</div></div>
+            <div><div class="text-xs font-bold uppercase tracking-wider mb-1" style="color:#E8E6E1;">Phone</div><div><a href="tel:+919147720104" style="color:#8A9296;">+91-9147720104</a> / <a href="tel:+919330722323" style="color:#8A9296;">+91-9330722323</a></div></div>
+            <div><div class="text-xs font-bold uppercase tracking-wider mb-1" style="color:#E8E6E1;">Email</div><div><a href="mailto:admn@artisanco.biz" style="color:#8A9296;">admn@artisanco.biz</a></div></div>
+          </div>
+        </div>
+        <div>
+          <p class="font-mono text-xs uppercase tracking-widest mb-5" style="color:#1DE0C8;">Find Us</p>
+          <iframe class="w-full h-52" style="filter:grayscale(1) invert(0.9) contrast(1.1) brightness(0.82);border-radius:6px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.0!2d88.3780!3d22.5720!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02771a9f6e1f9b%3A0x1!2sNarkeldanga%2C+Kolkata%2C+West+Bengal+700011!5e0!3m2!1sen!2sin!4v1700000000001" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Artisan & Co. office location"></iframe>
+        </div>
+      </div>
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs" style="color:#3A4245;">
+        <span>© 1995–2026 Artisan &amp; Co. / Inex Works Pvt. Ltd.</span>
+        <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full inline-block" style="background:#1DE0C8;box-shadow:0 0 6px #1DE0C8;"></span> Kolkata, India</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn=document.getElementById('menuBtn'),mobileMenu=document.getElementById('mobileMenu');
+    const bar1=document.getElementById('bar1'),bar2=document.getElementById('bar2'),bar3=document.getElementById('bar3');
+    let menuOpen=false;
+    function closeMenu(){menuOpen=false;mobileMenu.classList.remove('open');bar1.style.transform='';bar2.style.opacity='1';bar3.style.transform='';bar3.style.width='1rem';}
+    menuBtn.addEventListener('click',()=>{menuOpen=!menuOpen;mobileMenu.classList.toggle('open',menuOpen);
+      if(menuOpen){bar1.style.transform='translateY(8px) rotate(45deg)';bar2.style.opacity='0';bar3.style.transform='translateY(-8px) rotate(-45deg)';bar3.style.width='1.5rem';}else{closeMenu();}});
+
+    const form=document.getElementById('leadForm');
+    form.addEventListener('submit',async function(e){
+      e.preventDefault();
+      const data=new FormData(form);
+      try{
+        const res=await fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
+        if(res.ok){form.style.display='none';document.getElementById('formSuccess').classList.remove('hidden');}
+        else{document.getElementById('formError').classList.remove('hidden');}
+      }catch(err){document.getElementById('formError').classList.remove('hidden');}
+    });
+
+    const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});},{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
